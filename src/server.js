@@ -25,8 +25,11 @@ app.use('/', routes);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-app.listen(port, () => {
-    console.log(`Listening: http://localhost:${port}`);
+app.listen(port, (err) => {
+  if (err) {
+    console.log(`Error detected: ${err}`);
+  }
+  console.log(`Listening: http://localhost:${port}`);
 });
 
 export default app;
