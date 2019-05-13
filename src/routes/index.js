@@ -1,10 +1,10 @@
 import express from 'express';
-import axios from 'axios';
 
 import wrap from '../middlewares/wrap';
 import sampleRoute from './api/sampleRoute';
 import updateDataFeed from './api/updateDataFeed';
 import checkAddressBalance from './api/checkAddressBalance';
+import users from './api/users';
 
 const router = express.Router();
 
@@ -15,7 +15,8 @@ router.get('/', wrap(async (req, res) => {
 }));
 
 router.use('/sample', sampleRoute);
-router.use('/api', updateDataFeed);
+router.use('/datafeed', updateDataFeed);
 router.use('/balance', checkAddressBalance);
+router.use('/users', users);
 
 export default router;
