@@ -1,0 +1,38 @@
+{
+  "name": "CryptoPOSBackEnd",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "repository": "https://github.com/BitcoinBay/CryptoPOSBackEnd",
+  "author": "lightswarm124 <lightswarm@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./src/server.js",
+    "windev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/server.js",
+    "start": "yarn build && node ./dist/server.js",
+    "build": "babel ./src --out-dir ./dist --source-maps --copy-files",
+    "audit": "synk test",
+    "test": "./node_modules/.bin/mocha --compilers js:@babel/register"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bitbox-sdk": "^2.2.8",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0",
+    "synk": "^0.0.2"
+  }
+}

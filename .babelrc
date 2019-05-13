@@ -1,0 +1,17 @@
+{
+    "env": {
+        "development": {
+            "presets": [
+                ["@babel/preset-env", {
+                    "targets": {
+                        "node": "8.0"
+                    }
+                }]
+            ],
+            "plugins": [
+                "@babel/transform-arrow-functions"
+            ]
+        }
+    },
+    "sourceMaps": true
+}
