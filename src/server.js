@@ -54,18 +54,11 @@ app.use('/api', routes);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-<<<<<<< HEAD
-io.on('connection', function(socket) {
-  console.log('A user connected');
 
-  socket.on('disconnect', function() {
-    console.log('User disconnected');
-=======
 io.on('connection', function(socket){
   console.log('a user connected');
 
   socket.on('disconnect', function(){
     console.log('user disconnected');
->>>>>>> 306e25d01de279d1d3ce43b61ae8701d9302a1ce
   });
 });
