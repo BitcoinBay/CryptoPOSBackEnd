@@ -12,9 +12,20 @@ import middlewares  from './middlewares/middlewares';
 import wrap  from './middlewares/wrap';
 import routes from './routes';
 
-const app = express();
+const http = require('http');
+const socketIO = require('socket.io');
 
+const app = express();
+const server = http.Server(app);
+const io = socketIO(server);
 const port = process.env.PORT || 8000;
+
+server.listen(port, (err) => {
+  if (err) {
+    console.log(`Error detected: ${err}`);
+  }
+  console.log(`Listening: http://localhost:${port}`);
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -43,11 +54,10 @@ app.use('/api', routes);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-app.listen(port, (err) => {
-  if (err) {
-    console.log(`Error detected: ${err}`);
-  }
-  console.log(`Listening: http://localhost:${port}`);
-});
+io.on('connection', function(socket) {
+  console.log('A user connected');
 
-export default app;
+  socket.on('disconnect', function() {
+    console.log('User disconnected');
+  });
+});
