@@ -49,11 +49,12 @@ app.use(middlewares.errorHandler);
 
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  console.log('User connected');
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log('User disconnected');
   });
+  socket.on('event', msg => console.log(msg));
 });
 
 server.listen(port, (err) => {
