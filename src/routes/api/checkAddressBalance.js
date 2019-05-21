@@ -1,13 +1,7 @@
 import express from 'express';
 import axios from 'axios';
-
-const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
-const BITBOX = new BITBOXSDK();
-
 import wrap from '../../middlewares/wrap';
-
 const router = express.Router();
-
 
 router.get('/:address', wrap(async (req, res) => {
     try {

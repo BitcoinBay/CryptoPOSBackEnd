@@ -1,14 +1,8 @@
 require('dotenv').config();
 import express from 'express';
 import axios from 'axios';
-
-const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
-const BITBOX = new BITBOXSDK();
-
 import wrap from '../../middlewares/wrap';
-
 const router = express.Router();
-
 
 router.get('/', wrap(async (req, res) => {
     try {
