@@ -6,12 +6,11 @@ const PoSSchema = new Schema({
         type: String,
         required: true
     },
-    payment_currency: {
-        type: String,
-        required: true
-    },
-    xpub_address: {
-        type: String,
+    xpub: {
+        type: Schema.Types.ObjectId,
+        ref: 'xPub',
         required: true
     }
 });
+
+module.exports = mongoose.model('pos_systems', PoSSchema);
