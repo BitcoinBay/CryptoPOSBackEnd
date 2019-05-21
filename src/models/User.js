@@ -18,11 +18,6 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  },
-  pos: {
-    id: String,
-    name: String,
-    xpub: String
   }
 });
 
