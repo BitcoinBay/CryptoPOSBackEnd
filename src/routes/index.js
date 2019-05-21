@@ -4,6 +4,7 @@ import wrap from '../middlewares/wrap';
 import sampleRoute from './api/sampleRoute';
 import updateDataFeed from './api/updateDataFeed';
 import checkAddressBalance from './api/checkAddressBalance';
+import generateNewAddress from './api/generateNewAddress';
 import users from './api/users';
 
 const router = express.Router();
@@ -14,6 +15,7 @@ router.get('/', wrap(async (req, res) => {
     });
 }));
 
+router.use('/generate', generateNewAddress);
 router.use('/sample', sampleRoute);
 router.use('/datafeed', updateDataFeed);
 router.use('/balance', checkAddressBalance);

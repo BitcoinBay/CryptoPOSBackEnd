@@ -666,6 +666,49 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@chris.troutner/bitbox-js@https://github.com/christroutner/bitbox-js":
+  version "7.0.0"
+  resolved "https://github.com/christroutner/bitbox-js#0ea5f658c749c1595ba57a69d0b085474fb10256"
+  dependencies:
+    assert "^1.4.1"
+    axios "^0.17.1"
+    bc-bip68 "^1.0.5"
+    bch-wallet-bridge.js "github:web3bch/bch-wallet-bridge.js#master"
+    bigi "^1.4.2"
+    bip-schnorr "^0.3.0"
+    bip21 Bitcoin-com/bip21
+    bip32-utils Bitcoin-com/bip32-utils#0.13.1
+    bip38 "^2.0.2"
+    bip39 "^2.5.0"
+    bip66 "^1.1.5"
+    bitcoincash-ops Bitcoin-com/bitcoincash-ops#2.0.0
+    bitcoincashjs-lib Bitcoin-com/bitcoincashjs-lib#v4.0.0
+    bitcoinjs-message "^2.0.0"
+    bs58 "^4.0.1"
+    buffer "^5.1.0"
+    cashaddrjs "^0.2.9"
+    chalk "^2.3.0"
+    clear "0.0.1"
+    coininfo Bitcoin-com/coininfo
+    commander "^2.13.0"
+    cp-file "^5.0.0"
+    ecurve "^1.0.6"
+    figlet "^1.2.0"
+    git-clone "^0.1.0"
+    ini "^1.3.5"
+    mkdirp "^0.5.1"
+    node-cmd "^3.0.0"
+    node-emoji "^1.8.1"
+    qrcode "^1.2.0"
+    randombytes "^2.0.6"
+    repl.history "^0.1.4"
+    safe-buffer "^5.1.2"
+    satoshi-bitcoin "^1.0.4"
+    socket.io "^2.1.1"
+    socket.io-client "^2.1.1"
+    touch "^3.1.0"
+    wif "^2.0.6"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1603,6 +1646,16 @@ bindings@^1.2.1, bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
+bip-schnorr@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/bip-schnorr/-/bip-schnorr-0.3.0.tgz#e6490379603704e9dd123d874b41755aea4f352c"
+  integrity sha512-Sc1Hn2+1n+okPEW8G+JLjeaM12dsUOwr+oFlMDSKR9wYwNGMw0alskeBIHTmXxBxMZSWKhCW7PwKQVDyGmnaVg==
+  dependencies:
+    ecurve "^1.0.6"
+    js-sha256 "^0.9.0"
+    random-bytes "^1.0.0"
+    safe-buffer "^5.0.1"
+
 bip21@Bitcoin-com/bip21:
   version "2.0.1"
   resolved "https://codeload.github.com/Bitcoin-com/bip21/tar.gz/28f8d03a3a16ed11eb5b963248ed1be8c46c6d6f"
@@ -1612,6 +1665,15 @@ bip21@Bitcoin-com/bip21:
 bip32-utils@Bitcoin-com/bip32-utils#0.13.0:
   version "0.13.0"
   resolved "https://codeload.github.com/Bitcoin-com/bip32-utils/tar.gz/966fb8f0e0d4c667e4ee89adfa20c2078d66887c"
+  dependencies:
+    keccak "^1.3.0"
+    nyc "*"
+    standard "^11.0.1"
+    tape "*"
+
+bip32-utils@Bitcoin-com/bip32-utils#0.13.1:
+  version "0.13.1"
+  resolved "https://codeload.github.com/Bitcoin-com/bip32-utils/tar.gz/b8a33ebd0a0ac39de7cd987e5c3f77a8c5d84e58"
   dependencies:
     keccak "^1.3.0"
     nyc "*"
@@ -1713,6 +1775,10 @@ bitcoin-txdecoder@0.0.3:
   dependencies:
     bitcoinjs-lib "3.3.*"
 
+bitcoincash-ops@Bitcoin-com/bitcoincash-ops#2.0.0:
+  version "2.0.0"
+  resolved "https://codeload.github.com/Bitcoin-com/bitcoincash-ops/tar.gz/6ab82cc7326c67236f3b2d9d0457258ac2ef48e3"
+
 bitcoincashjs-lib@Bitcoin-com/bitcoincashjs-lib#3.3.4:
   version "3.3.4"
   resolved "https://codeload.github.com/Bitcoin-com/bitcoincashjs-lib/tar.gz/12fa5fe9b535816b54b9efedd6caf278d3e55b90"
@@ -1727,6 +1793,26 @@ bitcoincashjs-lib@Bitcoin-com/bitcoincashjs-lib#3.3.4:
     ecurve "^1.0.0"
     merkle-lib "^2.0.10"
     pushdata-bitcoin "^1.0.1"
+    randombytes "^2.0.1"
+    safe-buffer "^5.0.1"
+    typeforce "^1.11.3"
+    varuint-bitcoin "^1.0.4"
+    wif "^2.0.1"
+
+bitcoincashjs-lib@Bitcoin-com/bitcoincashjs-lib#v4.0.0:
+  version "4.0.0"
+  resolved "https://codeload.github.com/Bitcoin-com/bitcoincashjs-lib/tar.gz/3d360c780ec7df4a74aea93664c2b5ff8b08949a"
+  dependencies:
+    bech32 "^1.1.2"
+    bigi "^1.4.0"
+    bip66 "^1.1.0"
+    bitcoincash-ops Bitcoin-com/bitcoincash-ops#2.0.0
+    bs58check "^2.0.0"
+    create-hash "^1.1.0"
+    create-hmac "^1.1.3"
+    ecurve "^1.0.0"
+    merkle-lib "^2.0.10"
+    pushdata-bitcoin Bitcoin-com/pushdata-bitcoin#1.2.1
     randombytes "^2.0.1"
     safe-buffer "^5.0.1"
     typeforce "^1.11.3"
@@ -4224,6 +4310,11 @@ js-levenshtein@^1.1.3:
   resolved "https://registry.yarnpkg.com/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
   integrity sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==
 
+js-sha256@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/js-sha256/-/js-sha256-0.9.0.tgz#0b89ac166583e91ef9123644bd3c5334ce9d0966"
+  integrity sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -5527,6 +5618,12 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
+pushdata-bitcoin@Bitcoin-com/pushdata-bitcoin#1.2.1:
+  version "1.2.1"
+  resolved "https://codeload.github.com/Bitcoin-com/pushdata-bitcoin/tar.gz/9b75eebe597853c6eeaec3e6c44b6d9c9cd7ee86"
+  dependencies:
+    bitcoincash-ops Bitcoin-com/bitcoincash-ops#2.0.0
+
 pushdata-bitcoin@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/pushdata-bitcoin/-/pushdata-bitcoin-1.0.1.tgz#15931d3cd967ade52206f523aa7331aef7d43af7"
@@ -5554,6 +5651,11 @@ qs@6.7.0, qs@^6.3.0, qs@^6.5.1:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
+
+random-bytes@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/random-bytes/-/random-bytes-1.0.0.tgz#4f68a1dc0ae58bd3fb95848c30324db75d64360b"
+  integrity sha1-T2ih3Arli9P7lYSMMDJNt11kNgs=
 
 randomatic@^3.0.0:
   version "3.1.1"

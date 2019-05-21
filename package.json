@@ -14,6 +14,7 @@
     "test": "./node_modules/.bin/mocha --compilers js:@babel/register"
   },
   "dependencies": {
+    "@chris.troutner/bitbox-js": "https://github.com/christroutner/bitbox-js",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "bitbox-sdk": "^2.2.8",
