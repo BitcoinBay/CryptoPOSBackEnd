@@ -14,12 +14,14 @@ router.post("/", (req, res) => {
         User.findByIdAndUpdate(req.body.user_id, {
             $push: { pos_systems: saved_pos._id }
         }).exec((error) => {
-            // TODO: Send error to front-end
-            PoS.findByIdAndDelete(saved_pos._id).exec((error) => {
-                if (error) {
-                    console.log(error);
-                }
-            });
+            if (error) {
+                // TODO: Send error to front-end
+                PoS.findByIdAndDelete(saved_pos._id).exec((error) => {
+                    if (error) {
+                        console.log(error);
+                    }
+                });
+            }
         });
     }).catch((error) => console.log(error));
 });
