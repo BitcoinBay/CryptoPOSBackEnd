@@ -18,7 +18,11 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  pos_systems: [{
+    type: Schema.Types.ObjectId,
+    ref: 'PoS'
+  }]
 });
 
 module.exports = mongoose.model("users", UserSchema);
