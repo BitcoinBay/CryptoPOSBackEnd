@@ -5,6 +5,9 @@ import sampleRoute from './api/sampleRoute';
 import updateDataFeed from './api/updateDataFeed';
 import checkAddressBalance from './api/checkAddressBalance';
 import users from './api/users';
+import getUser from './api/getUser';
+import addXPub from './api/addXPub';
+import addPOS from './api/addPOS';
 
 const router = express.Router();
 
@@ -18,5 +21,7 @@ router.use('/sample', sampleRoute);
 router.use('/datafeed', updateDataFeed);
 router.use('/balance', checkAddressBalance);
 router.use('/users', users);
+router.use('/add-xpub', addXPub);
+router.use('/add-pos', addPOS);
 
 export default router;
