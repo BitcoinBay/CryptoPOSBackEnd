@@ -10,6 +10,8 @@ import generateBCHAddress from './api/generateBCHAddress';
 import generateBTCAddress from './api/generateBTCAddress';
 import generateETHAddress from './api/generateETHAddress';
 import users from './api/users';
+import addXPub from './api/addXPub';
+import addPOS from './api/addPOS';
 
 const router = express.Router();
 
@@ -28,5 +30,7 @@ router.use('/balanceBCH', checkBCHBalance);
 router.use('/balanceBTC', checkBTCBalance);
 router.use('/balanceETH', checkETHBalance);
 router.use('/users', users);
+router.use('/add-xpub', addXPub);
+router.use('/add-pos', addPOS);
 
 export default router;
