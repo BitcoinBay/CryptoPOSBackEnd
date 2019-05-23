@@ -9,7 +9,7 @@ let words = "talk story visual hidden behind wasp evil abandon bus brand circle 
 
 console.log("Mnemonic: ", mnemonic);
 
-const bchPath = "m/44'/145'/0'";
+const bchPath = "m/44'/1'/0'";
 const btcPath = "m/44'/0'/0'";
 const ethPath = "m/44'/60'/0'/0";
 
@@ -33,7 +33,7 @@ const walletPub = HDKey.fromExtendedKey(ethXPub);
 console.log("ETH XPub: ", ethXPub);
 
 for (let i = 0; i < 10; i++) {
-    let cashAddrBCH = BITBOX.Address.fromXPub(bchXPub, `0/${i}`);
+    let cashAddrBCH = BITBOX.Address.fromXPub(bchXPub, `0/${i+20}`);
     let addressBTC = BITBOX.Address.fromXPub(btcXPub, `0/${i}`);
 
     let legacyAddrBTC = BITBOX.Address.toLegacyAddress(addressBTC);
