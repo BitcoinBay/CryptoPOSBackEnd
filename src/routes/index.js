@@ -5,7 +5,6 @@ import sampleRoute from './api/sampleRoute';
 import updateDataFeed from './api/updateDataFeed';
 import checkAddressBalance from './api/checkAddressBalance';
 import users from './api/users';
-import getUser from './api/getUser';
 import addXPub from './api/addXPub';
 import addPOS from './api/addPOS';
 
