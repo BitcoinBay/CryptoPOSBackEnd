@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
     new_pos.save().then((saved_pos) => {
         User.findByIdAndUpdate(req.body.user_id, {
             $push: { pos_systems: saved_pos._id }
-        }).exec((error) => {
+        }).exec((error, user) => {
             if (error) {
                 // TODO: Send error to front-end
                 PoS.findByIdAndDelete(saved_pos._id).exec((error) => {
@@ -21,6 +21,8 @@ router.post("/", (req, res) => {
                         console.log(error);
                     }
                 });
+            } else {
+                res.json(user);
             }
         });
     }).catch((error) => console.log(error));
