@@ -34,6 +34,8 @@ mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
+mongoose.set('useFindAndModify', false);
+
 // Passport middleware
 app.use(passport.initialize());
 
@@ -49,10 +51,7 @@ app.use(middlewares.errorHandler);
 
 
 io.on('connection', function(socket){
-  console.log('User connected');
-
   socket.on('disconnect', function(){
-    console.log('User disconnected');
   });
   socket.on('event', msg => console.log(msg));
 });
