@@ -8,7 +8,7 @@ const PoSSchema = new Schema({
     },
     xpub: {
         type: Schema.Types.ObjectId,
-        ref: 'xPub',
+        ref: 'xpub_addresses',
         required: true
     }
 });

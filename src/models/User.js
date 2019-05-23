@@ -21,7 +21,7 @@ const UserSchema = new Schema({
   },
   pos_systems: [{
     type: Schema.Types.ObjectId,
-    ref: 'PoS'
+    ref: 'pos_systems'
   }]
 });
 
