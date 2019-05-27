@@ -50,10 +50,15 @@ app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
 
-io.on('connection', function(socket){
-  socket.on('disconnect', function(){
+io.on('connection', (socket) => {
+  console.log('user connected');
+  socket.on('event', (msg) => {
+    console.log(msg);
+    io.emit('event', msg);
   });
-  socket.on('event', msg => console.log(msg));
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
 });
 
 server.listen(port, (err) => {
