@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
- });
+});
 
 server.listen(port, (err) => {
   if (err) {
