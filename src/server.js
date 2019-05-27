@@ -49,13 +49,16 @@ app.use('/api', routes);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-
-io.on('connection', function(socket){
-  socket.on('disconnect', function(){
+io.on('connection', (socket) => {
+  console.log('user connected');
+  socket.on('event', (msg) => {
+    console.log(msg);
+    io.emit('event', msg);
+  });
+  socket.on('disconnect', () => {
     console.log('user disconnected');
   });
-  socket.on('event', msg => console.log(msg));
-});
+ });
 
 server.listen(port, (err) => {
   if (err) {
