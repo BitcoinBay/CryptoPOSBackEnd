@@ -20,13 +20,6 @@ const server = http.Server(app);
 const io = socketIO(server);
 const port = process.env.PORT || 8000;
 
-server.listen(port, (err) => {
-  if (err) {
-    console.log(`Error detected: ${err}`);
-  }
-  console.log(`Listening: http://localhost:${port}`);
-});
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -40,6 +33,8 @@ const db = require("./config/keys").mongoURI;
 mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
+
+mongoose.set('useFindAndModify', false);
 
 // Passport middleware
 app.use(passport.initialize());
@@ -56,9 +51,15 @@ app.use(middlewares.errorHandler);
 
 
 io.on('connection', function(socket){
-  console.log('a user connected');
-
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+  socket.on('event', msg => console.log(msg));
+});
+
+server.listen(port, (err) => {
+  if (err) {
+    console.log(`Error detected: ${err}`);
+  }
+  console.log(`Listening: http://localhost:${port}`);
 });

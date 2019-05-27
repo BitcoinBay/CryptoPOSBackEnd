@@ -1,18 +1,17 @@
 import express from 'express';
 import axios from 'axios';
-
-const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
-const BITBOX = new BITBOXSDK();
-
 import wrap from '../../middlewares/wrap';
-
 const router = express.Router();
-
 
 router.get('/:address', wrap(async (req, res) => {
     try {
-      axios.get(`https://rest.bitcoin.com/v2/address/details/${req.params.address}`)
+      axios.get(`https://api.blockcypher.com/v1/eth/main/addrs/${req.params.address}`)
         .then((result) => {
+          if (result.data.txrefs) {
+            console.log(result.data.txrefs);
+          }
+          console.log(result.data.total_received);
+
           res.status(200).json({
             status: result.data
           });
