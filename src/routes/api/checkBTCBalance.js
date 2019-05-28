@@ -8,13 +8,14 @@ router.get('/:address', wrap(async (req, res) => {
       axios.get(`https://api.blockcypher.com/v1/btc/main/addrs/${req.params.address}`)
         .then((result) => {
           if (result.data.txrefs) {
-            console.log(result.data.txrefs);
+            res.status(200).json({
+              utxo: result.data.txrefs
+            });
+          } else {
+            res.status(200).json({
+              utxo: []
+            })
           }
-          console.log(result.data.total_received);
-
-          res.status(200).json({
-            status: result.data
-          });
         })
         .catch((err) => {
           res.status(404).json({
