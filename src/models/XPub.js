@@ -6,6 +6,10 @@ const XPubSchema = new Schema({
         type: String,
         required: true
     },
+    type: {
+        type: String,
+        required: true
+    },
     address_index: {
         type: Number,
         required: true
