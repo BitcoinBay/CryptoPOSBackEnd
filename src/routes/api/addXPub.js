@@ -10,16 +10,10 @@ router.post("/", (req, res) => {
         address_index: 0
     });
 
-    XPub.findOne({ address: new_xpub.address }).exec((error, xpub) => {
-        if (!xpub) {
-            new_xpub.save().then((saved_xpub) => {
-                res.json(saved_xpub);
-            }).catch((error) => {
-                console.log(error);
-            });
-        } else {
-            res.json(xpub);
-        }
+    new_xpub.save().then((saved_xpub) => {
+        res.json(saved_xpub);
+    }).catch((error) => {
+        console.log(error);
     });
 });
 
