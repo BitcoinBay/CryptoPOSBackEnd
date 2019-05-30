@@ -13,14 +13,13 @@ router.post("/", (req, res) => {
     });
 
     XPub.findOne({ address: new_xpub.address }).exec((error, xpub) => {
-        if (!xpub && xpub.length && xpub.length === 111) {
+        if (!xpub && new_xpub.address.length === 111) {
 
             new_xpub.save().then((saved_xpub) => {
                 res.json(saved_xpub);
             }).catch((error) => {
                 console.log(error);
             });
-
         } else {
             res.json(xpub);
         }
