@@ -8,10 +8,7 @@ router.post("/", (req, res) => {
         if (error) {
             res.status(400).json(error);
         } else {
-            res.json({
-              address: pos.xpub.address,
-              index: pos.xpub.address_index
-            });
+            res.json(pos);
         }
     });
 });

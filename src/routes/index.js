@@ -14,6 +14,8 @@ import addXPub from './api/addXPub';
 import addPOS from './api/addPOS';
 import getAllUserPOS from './api/getAllUserPOS';
 import getPOSXPub from './api/getPOSXPub';
+import getPOSByID from './api/getPOSByID';
+import deletePOS from './api/deletePOS';
 
 const router = express.Router();
 
@@ -36,5 +38,7 @@ router.use('/add-xpub', addXPub);
 router.use('/add-pos', addPOS);
 router.use('/get-all-user-pos', getAllUserPOS);
 router.use('/get-pos-xpub', getPOSXPub);
+router.use('/get-pos-by-id', getPOSByID);
+router.use('/delete-pos', deletePOS);
 
 export default router;
