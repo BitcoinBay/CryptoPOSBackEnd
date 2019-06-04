@@ -3,7 +3,7 @@ const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
 const BITBOX = new BITBOXSDK({ restURL: "https://rest.bitcoin.com/v2/" });
 import wrap from '../../middlewares/wrap';
 const router = express.Router();
-const XPubKey = "xpub6BveHefBYPeyXn5QU8wahmWJ5obvfvxzA7CQeqE2hzCguMWKbZdaLB2WG87z3pJcBFs5QNMmkDTcq3CayF1U9sSiowukmuTrsBzGA82W2As";
+const XPubKey = "xpub6CiUMev4tH1dncKmjvP9ppmvaeqdzWZKjiL757FzLVNQreYjPs9SKWJA5ajh6ybaTMEFi7HGU7VCyTxYsbrEhMFUhNzN7dPgjQnfhuj7xx7";
 
 let address_index = 0;
 

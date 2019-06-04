@@ -1,9 +1,9 @@
 import express from 'express';
 const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
-const BITBOX = new BITBOXSDK({ restURL: "https://trest.bitcoin.com/v2/" });
+const BITBOX = new BITBOXSDK({ restURL: "https://rest.bitcoin.com/v2/" });
 import wrap from '../../middlewares/wrap';
 const router = express.Router();
-const XPubKey = "tpubDCoP9xnjhwkwC8pT7DVSPFDgbYb2uq2UAdY2DQmk2YtBpiEY8XGtT26P6NgYyc38fiuTF9x3MAtKmuUR2HPd7qKQmAYD5NTpfVy5SzZntWN";
+const XPubKey = "xpub6CiUMev4tH1dncKmjvP9ppmvaeqdzWZKjiL757FzLVNQreYjPs9SKWJA5ajh6ybaTMEFi7HGU7VCyTxYsbrEhMFUhNzN7dPgjQnfhuj7xx7";
 
 let address_index = 0;
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import wrap from '../../middlewares/wrap';
 
 const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
-const BITBOX = new BITBOXSDK({ restURL: "https://trest.bitcoin.com/v2/" });
+const BITBOX = new BITBOXSDK({ restURL: "https://rest.bitcoin.com/v2/" });
 const router = express.Router();
 
 router.get('/:address', wrap(async (req, res) => {

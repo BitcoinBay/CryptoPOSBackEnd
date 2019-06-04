@@ -5,15 +5,16 @@ const BITBOXSDK = require('@chris.troutner/bitbox-js');
 const BITBOX = new BITBOXSDK({ restURL: `https://trest.bitcoin.com/v2/`});
 
 const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
-let words = "talk story visual hidden behind wasp evil abandon bus brand circle sketch";
+let words = "traffic sight accuse version fantasy spy hobby attitude mushroom unaware scare large";
 
-console.log("Mnemonic: ", mnemonic);
+console.log("Mnemonic: ", words);
 
-const bchPath = "m/44'/1'/0'";
+const bchPath = "m/44'/145'/0'";
+const testPath = "m/44'/1'/0'";
 const btcPath = "m/44'/0'/0'";
 const ethPath = "m/44'/60'/0'/0";
 
-const rootSeed = BITBOX.Mnemonic.toSeed(words);
+const rootSeed = BITBOX.Mnemonic.toSeed(mnemonic);
 console.log(rootSeed);
 
 const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed);
@@ -33,7 +34,7 @@ const walletPub = HDKey.fromExtendedKey(ethXPub);
 console.log("ETH XPub: ", ethXPub);
 
 for (let i = 0; i < 10; i++) {
-    let cashAddrBCH = BITBOX.Address.fromXPub(bchXPub, `0/${i+20}`);
+    let cashAddrBCH = BITBOX.Address.fromXPub(bchXPub, `0/${i}`);
     let addressBTC = BITBOX.Address.fromXPub(btcXPub, `0/${i}`);
 
     let legacyAddrBTC = BITBOX.Address.toLegacyAddress(addressBTC);

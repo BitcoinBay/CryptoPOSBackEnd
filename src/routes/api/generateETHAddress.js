@@ -2,7 +2,7 @@ import express from 'express';
 const HDKey = require('ethereumjs-wallet/hdkey');
 import wrap from '../../middlewares/wrap';
 const router = express.Router();
-const XPubKey = "xpub6EEfFvbq3w6iSka2qyTrv8brCMswFRKhY8Dq1j8cHXfyzEijbYrcv936YrY9KftXwj9fdSuBJTSsxqJyz33evMb2WmKoMaEe4a1GasLyJMV";
+const XPubKey = "xpub6F6Cp1JePkQhw3RjYWrkQLBrtRmtAvWesic2dZQMnEv6hPDEKqgfeU4SUESfSiPSohtrCDT7oQW7wBbRB3xdfo52cE2twR1yp2yYLf61FxF";
 
 let address_index = 0;
 
