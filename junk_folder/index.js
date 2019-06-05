@@ -9,12 +9,12 @@ let words = "traffic sight accuse version fantasy spy hobby attitude mushroom un
 
 console.log("Mnemonic: ", words);
 
-const bchPath = "m/44'/145'/0'";
+const bchPath = "m/44'/0'/0'";
 const testPath = "m/44'/1'/0'";
 const btcPath = "m/44'/0'/0'";
 const ethPath = "m/44'/60'/0'/0";
 
-const rootSeed = BITBOX.Mnemonic.toSeed(mnemonic);
+const rootSeed = BITBOX.Mnemonic.toSeed(words);
 console.log(rootSeed);
 
 const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed);

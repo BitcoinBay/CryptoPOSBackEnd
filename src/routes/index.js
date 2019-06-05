@@ -1,14 +1,14 @@
 import express from 'express';
 
 import wrap from '../middlewares/wrap';
-import sampleRoute from './api/sampleRoute';
+import blockHeight from './api/blockHeight';
 import updateDataFeed from './api/updateDataFeed';
 import checkBCHBalance from './api/checkBCHBalance';
 import checkBTCBalance from './api/checkBTCBalance';
 import checkETHBalance from './api/checkETHBalance';
-import generateBCHAddress from './api/generateBCHAddress';
-import generateBTCAddress from './api/generateBTCAddress';
-import generateETHAddress from './api/generateETHAddress';
+//import generateBCHAddress from './api/generateBCHAddress';
+//import generateBTCAddress from './api/generateBTCAddress';
+//import generateETHAddress from './api/generateETHAddress';
 import users from './api/users';
 import addXPub from './api/addXPub';
 import addPOS from './api/addPOS';
@@ -25,10 +25,10 @@ router.get('/', wrap(async (req, res) => {
     });
 }));
 
-router.use('/generateBTC', generateBTCAddress);
-router.use('/generateBCH', generateBCHAddress);
-router.use('/generateETH', generateETHAddress);
-router.use('/sample', sampleRoute);
+//router.use('/generateBTC', generateBTCAddress);
+//router.use('/generateBCH', generateBCHAddress);
+//router.use('/generateETH', generateETHAddress);
+router.use('/blockHeight', blockHeight);
 router.use('/datafeed', updateDataFeed);
 router.use('/balanceBCH', checkBCHBalance);
 router.use('/balanceBTC', checkBTCBalance);
