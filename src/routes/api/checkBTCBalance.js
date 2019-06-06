@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.get('/:address', wrap(async (req, res) => {
     try {
-      axios.get(`https://api.blockcypher.com/v1/btc/main/addrs/${req.params.address}`)
+      axios
+        .get(`https://api.blockcypher.com/v1/btc/main/addrs/${req.params.address}`)
         .then((result) => {
           if (result.data.txrefs) {
             res.status(200).json({
@@ -18,15 +19,17 @@ router.get('/:address', wrap(async (req, res) => {
           }
         })
         .catch((err) => {
-          res.status(404).json({
-              error: err
+          console.log("Axios Error");
+          res.status(200).json({
+              utxo: []
           });
         })
     } catch (err) {
-        res.status(404).json({
-            error: err
-        });
+      console.log("Try Error");
+      res.status(200).json({
+          utxo: []
+      });
     }
-}));
+  }));
 
-export default router;
+  export default router;

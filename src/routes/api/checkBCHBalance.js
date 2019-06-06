@@ -9,13 +9,13 @@ const router = express.Router();
 router.get('/:address', wrap(async (req, res) => {
     try {
       let utxo = await BITBOX.Address.utxo(req.params.address);
-      console.log(utxo);
       res.status(200).json({
         utxo: utxo.utxos
-      })
+      });
     } catch (err) {
-      res.status(404).json({
-        error: err
+      console.log("Try Error");
+      res.status(200).json({
+        utxo: []
       });
     }
 }));
