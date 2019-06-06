@@ -6,11 +6,11 @@ const PoSSchema = new Schema({
         type: String,
         required: true
     },
-    xpub: {
+    xpubs: [{
         type: Schema.Types.ObjectId,
         ref: 'xpub_addresses',
         required: true
-    }
+    }]
 });
 
 module.exports = mongoose.model('pos_systems', PoSSchema);
