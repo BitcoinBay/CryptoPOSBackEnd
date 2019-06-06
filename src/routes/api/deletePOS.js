@@ -14,7 +14,7 @@ router.post("/", (req, res) => {
         } else {
             PoS.findById(req.body.pos_id).exec((error, pos) => {
                 if (!error) {
-                    XPub.findOneAndDelete(pos.xpub._id).exec((error, xpub) => {
+                    XPub.findOneAndDelete(pos.xpub).exec((error, xpub) => {
                         if (!error) {
                             pos.remove();
                         }
