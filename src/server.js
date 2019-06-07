@@ -26,6 +26,8 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 
+
+
 // DB Config
 const db = require("./config/keys").mongoURI;
 
@@ -48,7 +50,6 @@ app.use('/api', routes);
 // Error Handling middlewares
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
-
 
 io.on('connection', (socket) => {
   console.log('user connected');

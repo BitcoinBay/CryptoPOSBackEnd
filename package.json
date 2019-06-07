@@ -29,6 +29,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.8",
     "morgan": "^1.9.1",
+    "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "socket.io": "^2.2.0",
@@ -43,7 +44,6 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.9",
     "supertest": "^3.3.0",
     "synk": "^0.0.2"
   }
