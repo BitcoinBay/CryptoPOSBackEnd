@@ -3,15 +3,12 @@ const BITBOXSDK = require("bitbox-sdk/lib/bitbox-sdk").default;
 const BITBOX = new BITBOXSDK({ restURL: "https://rest.bitcoin.com/v2/" });
 import wrap from '../../middlewares/wrap';
 const router = express.Router();
-const XPubKey = "xpub6CiUMev4tH1dncKmjvP9ppmvaeqdzWZKjiL757FzLVNQreYjPs9SKWJA5ajh6ybaTMEFi7HGU7VCyTxYsbrEhMFUhNzN7dPgjQnfhuj7xx7";
 
-let address_index = 0;
-
-router.get('/', wrap(async (req, res) => {
+router.get('/:txid', wrap(async (req, res) => {
     try {
-      let address = BITBOX.Address.fromXPub(XPubKey, `0/${address_index}`);
+      let txid = await BITBOX.Transactions.details(rep.params.txid);
       res.status(200).json({
-          address: address
+          txid: txid
       });
     } catch (err) {
         res.status(404).json({

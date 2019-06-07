@@ -24,7 +24,7 @@ async function main() {
   const btcXPub = BITBOX.HDNode.toXPub(btcAccount);
   console.log("BTC XPub: ", btcXPub);
 
-  const bchAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, bchPath);
+  const bchAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, testPath);
   const bchXPub = BITBOX.HDNode.toXPub(bchAccount);
   console.log("BCH XPub: ", bchXPub);
 
@@ -40,8 +40,8 @@ async function main() {
 
       let legacyAddrBTC = BITBOX.Address.toLegacyAddress(addressBTC);
       let addressETH = walletPub.deriveChild(i).getWallet().getAddressString();
-      console.log(`BCH Address ${i+1}: `, cashAddrBCH);
       console.log(`BTC Address ${i+1}: `, legacyAddrBTC);
+      console.log(`BCH Address ${i+1}: `, cashAddrBCH);
       console.log(`ETH Address ${i+1}: `, addressETH, "\n");
   }
 }
