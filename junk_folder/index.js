@@ -6,11 +6,11 @@ const BITBOX = new BITBOXSDK({ restURL: `https://trest.bitcoin.com/v2/`});
 
 async function main() {
   const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
-  let words = "involve empower border render patrol define test gloom leisure iron gain enhance involve puppy little fat wage disorder observe snap chapter during census reform";
+  let words = "traffic sight accuse version fantasy spy hobby attitude mushroom unaware scare large";
 
   //console.log("Mnemonic: ", words);
 
-  const bchPath = "m/44'/145'/0'";
+  const bchPath = "m/44'/0'/0'";
   const testPath = "m/44'/1'/0'";
   const btcPath = "m/44'/0'/0'";
   const ethPath = "m/44'/60'/0'";
