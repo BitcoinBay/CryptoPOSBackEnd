@@ -4,6 +4,7 @@ import wrap from '../middlewares/wrap';
 import blockHeight from './api/blockHeight';
 import updateDataFeed from './api/updateDataFeed';
 import checkBCHBalance from './api/checkBCHBalance';
+import checkTSNBalance from './api/checkTSNBalance';
 import checkBTCBalance from './api/checkBTCBalance';
 import checkETHBalance from './api/checkETHBalance';
 //import generateBCHAddress from './api/generateBCHAddress';
@@ -32,6 +33,7 @@ router.get('/', wrap(async (req, res) => {
 router.use('/blockHeight', blockHeight);
 router.use('/datafeed', updateDataFeed);
 router.use('/balanceBCH', checkBCHBalance);
+router.use('/balanceTSN', checkTSNBalance);
 router.use('/balanceBTC', checkBTCBalance);
 router.use('/balanceETH', checkETHBalance);
 router.use('/users', users);

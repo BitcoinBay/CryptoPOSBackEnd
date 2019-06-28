@@ -7,6 +7,7 @@ const BITBOX = new BITBOXSDK({ restURL: `https://trest.bitcoin.com/v2/`});
 async function main() {
   const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
   let words = "traffic sight accuse version fantasy spy hobby attitude mushroom unaware scare large";
+  let testnetwords = "talk story visual hidden behind wasp evil abandon bus brand circle sketch";
 
   //console.log("Mnemonic: ", words);
 
@@ -19,12 +20,13 @@ async function main() {
   //console.log(rootSeed);
 
   const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed);
+//  const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed, "testnet");
 
   const btcAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, btcPath);
   const btcXPub = BITBOX.HDNode.toXPub(btcAccount);
   console.log("BTC XPub: ", btcXPub);
 
-  const bchAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, bchPath);
+  const bchAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, testPath);
   const bchXPub = BITBOX.HDNode.toXPub(bchAccount);
   console.log("BCH XPub: ", bchXPub);
 
