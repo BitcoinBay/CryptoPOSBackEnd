@@ -5,6 +5,8 @@ const BITBOXSDK = require('@chris.troutner/bitbox-js');
 const BITBOX = new BITBOXSDK({ restURL: `https://trest.bitcoin.com/v2/`});
 
 async function main() {
+  // pipe arrange twice erase train labor sad ginger vehicle patch force climb
+
   const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
   let words = "traffic sight accuse version fantasy spy hobby attitude mushroom unaware scare large";
   let testnetwords = "talk story visual hidden behind wasp evil abandon bus brand circle sketch";
@@ -26,7 +28,7 @@ async function main() {
   const btcXPub = BITBOX.HDNode.toXPub(btcAccount);
   console.log("BTC XPub: ", btcXPub);
 
-  const bchAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, testPath);
+  const bchAccount = BITBOX.HDNode.derivePath(bchMasterHDNode, bchPath);
   const bchXPub = BITBOX.HDNode.toXPub(bchAccount);
   console.log("BCH XPub: ", bchXPub);
 

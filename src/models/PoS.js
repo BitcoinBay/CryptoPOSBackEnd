@@ -6,6 +6,11 @@ const PoSSchema = new Schema({
         type: String,
         required: true
     },
+    transactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'transaction',
+        required: true
+    }],
     xpubs: [{
         type: Schema.Types.ObjectId,
         ref: 'xpub_addresses',
