@@ -66,33 +66,44 @@ io.on('connection', (socket) => {
 
   // Referenced from https://github.com/mheap/socketio-chat-example/blob/master/app.js
   socket.on('add-user', (data) => {
-    clients[data.pos_id] = {
-      "socket": socket.id
-    };
+    if (!clients[data.pos_id]) {
+      clients[data.pos_id] = []
+    }
+    clients[data.pos_id].push(socket.id);
     console.log(data);
-    console.log(clients[data.pos_id]);
+    console.log(clients);
   });
 
-  socket.on('event', (msg) => {
-    console.log(msg);
-    io.emit('event', msg);
+  socket.on('event', (data) => {
+    console.log(data);
+    io.emit('event', data);
   });
 
-  socket.on('private-message', (msg) => {
-    if (clients[msg.username]){
-      console.log("Sending: " + msg.content + " to " + msg.username);
-      io.sockets.connected[clients[msg.username].socket].emit("add-message", msg);
-    } else {
-      console.log("User does not exist: " + msg.username);
+  socket.on('private-message', (data) => {
+    console.log(data);
+
+    for (let name in clients) {
+      console.log(name);
+      if (name === data.pos_id) {
+        for (let id in clients[name]) {
+          console.log(clients[name][id]);
+          io.to(clients[name][id]).emit("paymentRequest", data);
+        }
+      } else {
+        console.log("PoS ID does not exist");
+      }
     }
   });
 
   socket.on('disconnect', () => {
     for (let name in clients) {
-      if (clients[name].socket === socket.id) {
-        delete clients[name];
-        console.log('user disconnected');
-        break;
+      for (let id = 0; id < clients[name].length; id++) {
+        if (clients[name][id] === socket.id) {
+          clients[name].splice(id, 1);
+          id--;
+          console.log('user disconnected');
+          break;
+        }
       }
     }
   });
