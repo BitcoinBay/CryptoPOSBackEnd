@@ -13,14 +13,12 @@ import wrap  from './middlewares/wrap';
 import routes from './routes';
 
 const http = require('http');
-const socketIO = require('socket.io');
-
 const app = express();
-const server = http.Server(app);
-const io = socketIO(server);
+
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 8000;
 
+// Apply express middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -52,6 +50,16 @@ app.use('/api', routes);
 // Error Handling middlewares
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
+
+let server = app.listen(port, (err) => {
+  if (err) {
+    console.log(`Error detected: ${err}`);
+  }
+  console.log(`Listening: http://${host}:${port}`);
+});
+
+// Initialize Server
+const io = require('socket.io').listen(server);
 
 io.on('connection', (socket) => {
   console.log('user connected');
@@ -88,11 +96,4 @@ io.on('connection', (socket) => {
       }
     }
   });
-});
-
-server.listen(port, (err) => {
-  if (err) {
-    console.log(`Error detected: ${err}`);
-  }
-  console.log(`Listening: http://${host}:${port}`);
 });
