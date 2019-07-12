@@ -86,8 +86,7 @@ io.on('connection', (socket) => {
       console.log(name);
       if (name === data.pos_id) {
         for (let id in clients[name]) {
-          console.log(clients[name][id]);
-          io.to(clients[name][id]).emit("paymentRequest", data);
+          let receiverId = clients[name][id];           io.to(receiverId).emit("paymentRequest", data);
         }
       } else {
         console.log("PoS ID does not exist");
