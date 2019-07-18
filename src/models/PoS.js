@@ -8,7 +8,7 @@ const PoSSchema = new Schema({
     },
     transactions: [{
         type: Schema.Types.ObjectId,
-        ref: 'transaction',
+        ref: 'transactions',
         required: true
     }],
     xpubs: [{
