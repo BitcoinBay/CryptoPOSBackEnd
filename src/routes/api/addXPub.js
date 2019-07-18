@@ -23,6 +23,8 @@ router.post("/", (req, res) => {
             });
         }).catch((error) => {
             console.log(error);
+
+            res.status(400).end();
         });
     } else {
         res.status(400).end();
