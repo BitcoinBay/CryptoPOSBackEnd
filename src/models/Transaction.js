@@ -2,30 +2,30 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Transaction = new Schema({
+    hash: {
+        type: String,
+        required: true
+    },
+    block_number: {
+        type: Number,
+        required: true
+    },
     amount: {
         type: Number,
         required: true
     },
-    blockHeight: {
+    crypto_currency: {
+        type: String,
+        required: true
+    },
+    fiat_currency: {
+        type: String,
+        required: true
+    },
+    market_price: {
         type: Number,
-        required: true
-    },
-    crypto: {
-        type: String,
-        required: true
-    },
-    fiat: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    txHash: {
-        type: String,
         required: true
     },
 });
 
-module.exports = mongoose.model("transaction", Transaction);
+module.exports = mongoose.model("transactions", Transaction);
