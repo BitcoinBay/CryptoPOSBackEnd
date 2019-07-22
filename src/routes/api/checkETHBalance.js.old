@@ -6,11 +6,11 @@ const router = express.Router();
 router.get('/:address', wrap(async (req, res) => {
     try {
       axios
-        .get(`http://api-ropsten.etherscan.io/api?module=account&action=txlist&address=${req.params.address}&sort=desc&apikey=F3KDPDV1JFGNBE3ZX96A8M8886R17ZNCPR`)
+        .get(`https://api.blockcypher.com/v1/eth/main/addrs/${req.params.address}`)
         .then((result) => {
-          if (result.data.result) {
+          if (result.data.txrefs) {
             res.status(200).json({
-              utxo: result.data.result
+              utxo: result.data.txrefs
             });
           } else {
             res.status(200).json({

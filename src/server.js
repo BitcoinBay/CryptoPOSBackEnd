@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 import express from 'express';
 import morgan  from 'morgan';
 import mongoose from 'mongoose';
@@ -13,14 +14,12 @@ import wrap  from './middlewares/wrap';
 import routes from './routes';
 
 const http = require('http');
-const socketIO = require('socket.io');
-
 const app = express();
-const server = http.Server(app);
-const io = socketIO(server);
+
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 8000;
 
+// Apply express middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -53,46 +52,59 @@ app.use('/api', routes);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
+let server = app.listen(port, (err) => {
+  if (err) {
+    console.log(`Error detected: ${err}`);
+  }
+  console.log(`Listening: http://${host}:${port}`);
+});
+
+// Initialize Server
+const io = require('socket.io').listen(server);
+
 io.on('connection', (socket) => {
   console.log('user connected');
 
   // Referenced from https://github.com/mheap/socketio-chat-example/blob/master/app.js
   socket.on('add-user', (data) => {
-    clients[data.pos_id] = {
-      "socket": socket.id
-    };
+    if (!clients[data.pos_id]) {
+      clients[data.pos_id] = []
+    }
+    clients[data.pos_id].push(socket.id);
     console.log(data);
-    console.log(clients[data.pos_id]);
+    console.log(clients);
   });
 
-  socket.on('event', (msg) => {
-    console.log(msg);
-    io.emit('event', msg);
+  socket.on('event', (data) => {
+    console.log(data);
+    io.emit('event', data);
   });
 
-  socket.on('private-message', (msg) => {
-    if (clients[msg.username]){
-      console.log("Sending: " + msg.content + " to " + msg.username);
-      io.sockets.connected[clients[msg.username].socket].emit("add-message", msg);
-    } else {
-      console.log("User does not exist: " + msg.username);
+  socket.on('private-message', (data) => {
+    console.log(data);
+
+    for (let name in clients) {
+      console.log(name);
+      if (name === data.pos_id) {
+        for (let id in clients[name]) {
+          let receiverId = clients[name][id];           io.to(receiverId).emit("paymentRequest", data);
+        }
+      } else {
+        console.log("PoS ID does not exist");
+      }
     }
   });
 
   socket.on('disconnect', () => {
     for (let name in clients) {
-      if (clients[name].socket === socket.id) {
-        delete clients[name];
-        console.log('user disconnected');
-        break;
+      for (let id = 0; id < clients[name].length; id++) {
+        if (clients[name][id] === socket.id) {
+          clients[name].splice(id, 1);
+          id--;
+          console.log('user disconnected');
+          break;
+        }
       }
     }
   });
-});
-
-server.listen(port, (err) => {
-  if (err) {
-    console.log(`Error detected: ${err}`);
-  }
-  console.log(`Listening: http://${host}:${port}`);
 });

@@ -7,6 +7,7 @@ const User = require("../../models/User");
 router.post("/", (req, res) => {
     const new_pos = new PoS({
         name: req.body.name,
+        transactions: [],
         xpubs: [ req.body.xpub ]
     });
 
