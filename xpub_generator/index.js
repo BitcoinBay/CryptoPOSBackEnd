@@ -2,26 +2,26 @@ const EthWallet = require('ethereumjs-wallet');
 const HDKey = require('ethereumjs-wallet/hdkey');
 const BITBOXSDK = require('@chris.troutner/bitbox-js');
 
-const BITBOX = new BITBOXSDK({ restURL: `https://trest.bitcoin.com/v2/`});
+const BITBOX = new BITBOXSDK({ restURL: `https://rest.bitcoin.com/v2/`});
 
-const bchPath = "m/44'/145'/0'";
+const bchPath = "m/44'/0'/0'";
 const testPath = "m/44'/1'/0'";
 const btcPath = "m/44'/0'/0'";
 const ethPath = "m/44'/60'/0'";
 const NETWORK = "mainnet";
 
-
 async function main() {
   const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
-  console.log(mnemonic);
   // manually input mnemonic below
-  let words = "";
+  let words = "traffic sight accuse version fantasy spy hobby attitude mushroom unaware scare large";
 
   let rootSeed;
-  if (words = "") {
+  if (words === "") {
     rootSeed = await BITBOX.Mnemonic.toSeed(mnemonic);
+    console.log(mnemonic);
   } else {
     rootSeed = await BITBOX.Mnemonic.toSeed(words);
+    console.log(words);
   }
 
   const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed);
