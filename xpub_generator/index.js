@@ -19,9 +19,11 @@ async function main() {
   if (words === "") {
     rootSeed = await BITBOX.Mnemonic.toSeed(mnemonic);
     console.log(mnemonic);
+    console.log(rootSeed);
   } else {
     rootSeed = await BITBOX.Mnemonic.toSeed(words);
-    console.log(words);
+    console.log(mnemonic);
+    console.log(rootSeed);
   }
 
   const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed);
