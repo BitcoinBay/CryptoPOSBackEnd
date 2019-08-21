@@ -13,7 +13,7 @@ const NETWORK = "mainnet";
 async function main() {
   const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
   // manually input mnemonic below
-  let words = "traffic sight accuse version fantasy spy hobby attitude mushroom unaware scare large";
+  let words = "talk story visual hidden behind wasp evil abandon bus brand circle sketch";
 
   let rootSeed;
   if (words === "") {
