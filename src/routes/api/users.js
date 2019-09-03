@@ -91,7 +91,11 @@ router.post("/login", (req, res) => {
             expiresIn: 31556926 // 1 year in seconds
           },
           (err, token) => {
-            res.json({"token": token});
+            if (err) {
+              res.status(400).end();
+            } else {
+              res.json({"token": token});
+            }
           }
         );
       } else {
