@@ -1,16 +1,16 @@
 require('dotenv').config();
 
 import express from 'express';
-import morgan  from 'morgan';
+import morgan from 'morgan';
 import mongoose from 'mongoose';
-import helmet  from 'helmet';
+import helmet from 'helmet';
 import axios from 'axios';
-import bodyParser  from 'body-parser';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import passport from 'passport';
 
-import middlewares  from './middlewares/middlewares';
-import wrap  from './middlewares/wrap';
+import middlewares from './middlewares/middlewares';
+import wrap from './middlewares/wrap';
 import routes from './routes';
 
 const http = require('http');
@@ -81,19 +81,33 @@ io.on('connection', (socket) => {
   });
 
   socket.on('private-message', (data) => {
-    console.log(data);
-
     for (let name in clients) {
-      console.log(name);
+      // console.log(name);
       if (name === data.pos_id) {
         for (let id in clients[name]) {
-          let receiverId = clients[name][id];           io.to(receiverId).emit("paymentRequest", data);
+          let receiverId = clients[name][id];
+          io.to(receiverId).emit("paymentRequest", data);
         }
       } else {
         console.log("PoS ID does not exist");
       }
     }
   });
+
+    socket.on('update_status', (data) => {
+        console.log(data);
+
+        for (let name in clients) {
+            if (name === data.pos_id) {
+                for (let id in clients[name]) {
+                    let receiver_id = clients[name][id];
+                    io.to(receiver_id).emit("update_status", data);
+                }
+            } else {
+                console.log("PoS does not exist");
+            }
+        }
+    });
 
   socket.on('disconnect', () => {
     for (let name in clients) {

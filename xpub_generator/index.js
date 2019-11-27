@@ -11,20 +11,21 @@ const ethPath = "m/44'/60'/0'";
 const NETWORK = "mainnet";
 
 async function main() {
-  const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
+  //const mnemonic = BITBOX.Mnemonic.generate(128, BITBOX.Mnemonic.wordLists()["english"]);
   // manually input mnemonic below
-  let words = "talk story visual hidden behind wasp evil abandon bus brand circle sketch";
+  // let words = "penalty box theory hundred want unhappy inhale close lock hollow vital spawn";
+  let words = "vocal alley sphere depart pipe glad skate strong sand pear desert fence lecture announce arrest warrior inform vacant tonight salute maid similar loop gap"
 
-  let rootSeed;
-  if (words === "") {
-    rootSeed = await BITBOX.Mnemonic.toSeed(mnemonic);
-    console.log(mnemonic);
+  // let rootSeed;
+  // if (words === "") {
+  //   rootSeed = await BITBOX.Mnemonic.toSeed(mnemonic);
+  //   console.log(mnemonic);
+  //   console.log(rootSeed);
+  // } else {
+    let rootSeed = await BITBOX.Mnemonic.toSeed(words);
+    console.log(words);
     console.log(rootSeed);
-  } else {
-    rootSeed = await BITBOX.Mnemonic.toSeed(words);
-    console.log(mnemonic);
-    console.log(rootSeed);
-  }
+  // }
 
   const bchMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed);
   const testMasterHDNode = BITBOX.HDNode.fromSeed(rootSeed, "testnet");
