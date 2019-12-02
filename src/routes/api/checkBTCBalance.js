@@ -7,7 +7,7 @@ router.get('/:address', wrap(async (req, res) => {
     try {
         axios
         // .get(`https://api.blockcypher.com/v1/btc/main/addrs/${req.params.address}`)
-        .get('https://api.blockcypher.com/v1/btc/test3/addrs/' + req.params.address)
+        .get('https://api.blockcypher.com/v1/btc/main/addrs/' + req.params.address)
         .then((result) => {
             if (result.data.txrefs) {
                 res.status(200).json({
